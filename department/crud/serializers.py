@@ -13,10 +13,3 @@ class SectorSerializer(serializers.ModelSerializer):
         model = Sector
         fields = '__all__'
 
-
-class ListSectorByDepartmentSerializer(serializers.ModelSerializer):
-    sector_name = serializers.ReadOnlyField(source='sector.name')
-
-    class Meta:
-        model = Department
-        fields = ['sector_name']

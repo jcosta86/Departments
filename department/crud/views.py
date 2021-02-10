@@ -11,11 +11,3 @@ class DepartmentViewSet(viewsets.ModelViewSet):
 class SectorViewSet(viewsets.ModelViewSet):
     queryset = Sector.objects.all().order_by('name')
     serializer_class = SectorSerializer
-
-
-class ListSectorByDepartment(generics.ListAPIView):
-    def get_queryset(self):
-        queryset = Sector.objects.filter(department_id=self.kwargs['pk'])
-        return queryset
-
-    serializer_class = ListSectorByDepartmentSerializer
