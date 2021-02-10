@@ -1,8 +1,21 @@
-from rest_framework import viewsets
-from .serializers import DepartmentSerializer
-from .models import Department
+from rest_framework import viewsets, generics
+from .serializers import DepartmentSerializer, SectorSerializer, ListSectorByDepartmentSerializer
+from .models import Department, Sector
 
 
 class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all().order_by('name')
     serializer_class = DepartmentSerializer
+
+
+class SectorViewSet(viewsets.ModelViewSet):
+    queryset = Sector.objects.all().order_by('name')
+    serializer_class = SectorSerializer
+
+
+class ListSectorByDepartment(generics.ListAPIView):
+    def get_queryset(self):
+        queryset = Sector.objects.filter(department_id=self.kwargs['pk'])
+        return queryset
+
+    serializer_class = ListSectorByDepartmentSerializer
