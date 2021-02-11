@@ -15,8 +15,7 @@ class SectorSerializer(serializers.ModelSerializer):
 
 
 class ListSectorByDepartmentSerializer(serializers.ModelSerializer):
-    sector_name = serializers.ReadOnlyField(source='sector.name')
 
     class Meta:
-        model = Department
-        fields = ['sector_name']
+        model = Sector
+        fields = ['name', 'description']

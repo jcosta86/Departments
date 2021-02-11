@@ -14,8 +14,11 @@ class SectorViewSet(viewsets.ModelViewSet):
 
 
 class ListSectorByDepartment(generics.ListAPIView):
+    """
+    List all sectors by department
+    """
     def get_queryset(self):
-        queryset = Sector.objects.filter(department_id=self.kwargs['pk'])
+        queryset = Sector.objects.filter(department=self.kwargs['pk'])
         return queryset
 
     serializer_class = ListSectorByDepartmentSerializer

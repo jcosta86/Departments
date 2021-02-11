@@ -16,4 +16,3 @@ class Sector(models.Model):
 
     def __str__(self):
         return f"Sector {self.name}"
-
